@@ -11,8 +11,8 @@ export default {
           50: 'oklch(0.962 0.022 175)',
           100: 'oklch(0.93 0.03 173)',
           200: 'oklch(0.85 0.045 170)',
-          500: 'oklch(0.62 0.115 168)',
-          600: 'oklch(0.55 0.115 168)',
+          500: '#269374', // BackdPayments brand green (B-mark + "Payments" wordmark)
+          600: '#1f7a60',
         },
         navy: {
           500: 'oklch(0.42 0.022 250)',
