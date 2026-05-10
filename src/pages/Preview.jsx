@@ -45,8 +45,15 @@ export default function Preview() {
   };
 
   return (
-    <div className="grid gap-8 md:grid-cols-2">
+    <div className="grid gap-8 md:grid-cols-2 md:items-start">
       <div className="space-y-6">
+        <header>
+          <h1 className="text-3xl font-bold leading-tight text-navy-900">{product.name}</h1>
+          {product.details && (
+            <p className="mt-2 text-sm text-navy-500">{product.details}</p>
+          )}
+        </header>
+
         <div className="rounded-2xl bg-neutral-50 p-6">
           <img
             src={product.main_picture_url}
@@ -57,7 +64,10 @@ export default function Preview() {
 
         {product.story_html && (
           <section aria-labelledby="story-heading" className="space-y-2">
-            <h2 id="story-heading" className="text-sm font-semibold uppercase tracking-wider text-navy-500">
+            <h2
+              id="story-heading"
+              className="text-sm font-semibold uppercase tracking-wider text-navy-500"
+            >
               Story
             </h2>
             <p className="text-sm leading-relaxed text-navy-700">{product.story_html}</p>
@@ -66,12 +76,6 @@ export default function Preview() {
       </div>
 
       <div className="space-y-6">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-navy-500">{product.brand_name}</p>
-          <h1 className="mt-1 text-2xl font-bold text-navy-900">{product.name}</h1>
-          <p className="mt-1 text-sm text-navy-500">{product.details}</p>
-        </div>
-
         <div>
           <p className="mb-2 text-sm font-medium text-navy-900">Select size</p>
           <div className="grid grid-cols-5 gap-2">
