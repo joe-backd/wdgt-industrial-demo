@@ -26,6 +26,15 @@ export default {
         paper: {
           DEFAULT: 'oklch(0.985 0.003 250)',
         },
+        forest: {
+          900: '#143A2C',
+          950: '#0F2C21',
+          line: '#234638',
+        },
+        gold: {
+          500: '#E5B964',
+          600: '#D8A84F',
+        },
       },
       borderRadius: {
         '2xl': '1.25rem',
