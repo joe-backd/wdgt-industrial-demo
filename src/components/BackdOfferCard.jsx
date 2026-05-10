@@ -1,7 +1,8 @@
 import BrandMark from './BrandMark';
+import { asLowAsMonthlyCents } from '../lib/rates';
 
 const dollars = (cents) => (cents / 100).toFixed(2);
-const monthlyEstimate = (cents) => dollars(Math.round(cents / 4));
+const monthlyEstimate = (cents) => dollars(asLowAsMonthlyCents(cents));
 
 // Below this synthetic floor the BNPL split doesn't make sense
 // (demo prices range $16–$2k, but a $0 cart still mounts the panel).
