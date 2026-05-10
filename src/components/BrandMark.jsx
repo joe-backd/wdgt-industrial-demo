@@ -4,20 +4,21 @@
 // which is wrong per the brand spec. "BackdPayments" is one word,
 // no space between Backd and Payments.
 
-// Icon size targets the cap-height of the wordmark "B" so the brand-mark
-// glyph reads at roughly the same scale as the typographic B beside it.
-// Montserrat cap-height is ~0.7 of font-size; SVG bbox ~ icon-height.
+// Icon sized slightly larger than the cap-height of the wordmark "B"
+// (~1.2× cap). Montserrat cap-height is ~0.72 of font-size; SVG bbox
+// ~ icon-height. No gap between icon and wordmark — the B-mark glyph
+// sits flush against the typographic "B" in `Backd`.
 const SIZE_VARIANTS = {
-  sm: { icon: 11, gap: 'gap-1', text: 'text-sm' },     // text-sm 14px → cap ~10
-  md: { icon: 14, gap: 'gap-1.5', text: 'text-lg' },   // text-lg 18px → cap ~13
-  lg: { icon: 18, gap: 'gap-2', text: 'text-2xl' },    // text-2xl 24px → cap ~17
+  sm: { icon: 12, text: 'text-sm' },    // text-sm 14px → cap ~10 → icon ~1.2× cap
+  md: { icon: 16, text: 'text-lg' },    // text-lg 18px → cap ~13 → icon ~1.2× cap
+  lg: { icon: 20, text: 'text-2xl' },   // text-2xl 24px → cap ~17 → icon ~1.2× cap
 };
 
 export default function BrandMark({ size = 'md', className = '' }) {
   const v = SIZE_VARIANTS[size] ?? SIZE_VARIANTS.md;
   return (
     <span
-      className={`inline-flex items-center font-bold tracking-tight ${v.gap} ${v.text} ${className}`}
+      className={`inline-flex items-center font-bold tracking-tight ${v.text} ${className}`}
       aria-label="BackdPayments"
     >
       <svg
