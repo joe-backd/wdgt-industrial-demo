@@ -19,7 +19,7 @@ export default function BackdOfferCard({ totalCents }) {
   return (
     <div className="rounded-3xl bg-mint-50 px-7 pb-6 pt-7">
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-5">
-        <div>
+        <div className="text-center">
           <p className="text-2xl font-bold leading-none text-navy-900">Net 30</p>
           <p className="mt-2 text-xs text-navy-500">Up to 90 days</p>
         </div>
@@ -30,7 +30,7 @@ export default function BackdOfferCard({ totalCents }) {
           <span className="block h-6 w-px bg-mint-200" />
         </div>
 
-        <div className="text-right">
+        <div className="text-center">
           <p className="text-xs text-navy-500">as low as</p>
           <p className="mt-2 text-2xl font-bold leading-none text-navy-900">
             ${monthlyEstimate(totalCents)}

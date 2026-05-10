@@ -4,10 +4,13 @@
 // which is wrong per the brand spec. "BackdPayments" is one word,
 // no space between Backd and Payments.
 
+// Icon size targets the cap-height of the wordmark "B" so the brand-mark
+// glyph reads at roughly the same scale as the typographic B beside it.
+// Montserrat cap-height is ~0.7 of font-size; SVG bbox ~ icon-height.
 const SIZE_VARIANTS = {
-  sm: { icon: 16, gap: 'gap-1', text: 'text-sm' },
-  md: { icon: 22, gap: 'gap-1.5', text: 'text-lg' },
-  lg: { icon: 28, gap: 'gap-2', text: 'text-2xl' },
+  sm: { icon: 11, gap: 'gap-1', text: 'text-sm' },     // text-sm 14px → cap ~10
+  md: { icon: 14, gap: 'gap-1.5', text: 'text-lg' },   // text-lg 18px → cap ~13
+  lg: { icon: 18, gap: 'gap-2', text: 'text-2xl' },    // text-2xl 24px → cap ~17
 };
 
 export default function BrandMark({ size = 'md', className = '' }) {
