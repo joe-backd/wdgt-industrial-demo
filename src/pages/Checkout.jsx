@@ -51,32 +51,16 @@ export default function Checkout() {
 
   const onCardSubmit = (e) => {
     e.preventDefault();
-    // Demo only — never wire real card processing here.
     completeOrder();
   };
 
   return (
     <>
-      <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
+      <div className="grid gap-10 lg:grid-cols-[1fr_400px]">
         <section aria-labelledby="checkout-heading" className="space-y-6">
-          <header>
-            <h1 id="checkout-heading" className="text-2xl font-bold text-navy-900">
-              Checkout
-            </h1>
-            <p className="mt-1 text-sm text-navy-500">
-              Pay later with BackdPayments, or pay now by card.
-            </p>
-          </header>
-
-          <PayLaterButton onClick={() => setBnplOpen(true)} />
-
-          <div className="flex items-center gap-3" aria-hidden="true">
-            <span className="h-px flex-1 bg-neutral-200" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-navy-500">
-              or pay now
-            </span>
-            <span className="h-px flex-1 bg-neutral-200" />
-          </div>
+          <h1 id="checkout-heading" className="text-2xl font-bold text-navy-900">
+            Checkout
+          </h1>
 
           <form onSubmit={onCardSubmit} className="space-y-4" autoComplete="on">
             <div>
@@ -175,31 +159,46 @@ export default function Checkout() {
             >
               Pay ${dollars(totalCents)}
             </button>
-            <p className="text-center text-xs text-navy-500">
-              Demo only — no real card is charged.
-            </p>
           </form>
+
+          <div className="flex items-center gap-3" aria-hidden="true">
+            <span className="h-px flex-1 bg-neutral-200" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-navy-500">OR</span>
+            <span className="h-px flex-1 bg-neutral-200" />
+          </div>
+
+          <PayLaterButton onClick={() => setBnplOpen(true)} />
         </section>
 
-        <aside className="h-fit space-y-4 rounded-2xl border border-neutral-200 bg-white p-5">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-navy-500">Order summary</h2>
+        <aside className="h-fit space-y-5 rounded-2xl border border-neutral-200 bg-white p-6">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-navy-500">Order summary</h2>
+
           <ul className="divide-y divide-neutral-200">
             {items.map((it) => (
-              <li key={`${it.id}-${it.size}`} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-neutral-50">
+              <li
+                key={`${it.id}-${it.size}`}
+                className="flex items-center gap-4 py-4 first:pt-0 last:pb-0"
+              >
+                <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-50">
                   <img src={it.image} alt={it.name} className="h-full w-full object-contain" />
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-xs font-medium text-navy-900">{it.name}</p>
-                  <p className="text-[11px] text-navy-500">US {it.size} · Qty {it.qty}</p>
+                <div className="min-w-0 flex-1 space-y-0.5">
+                  <p className="text-[10px] uppercase tracking-wider text-navy-500">{it.brand}</p>
+                  <p className="line-clamp-2 text-sm font-medium leading-snug text-navy-900">
+                    {it.name}
+                  </p>
+                  <p className="text-xs text-navy-500">
+                    US {it.size} · Qty {it.qty}
+                  </p>
                 </div>
-                <p className="text-xs font-semibold tabular-nums text-navy-900">
+                <p className="self-start text-sm font-semibold tabular-nums text-navy-900">
                   ${dollars(it.priceCents * it.qty)}
                 </p>
               </li>
             ))}
           </ul>
-          <dl className="space-y-2 border-t border-neutral-200 pt-4 text-sm">
+
+          <dl className="space-y-2.5 border-t border-neutral-200 pt-5 text-sm">
             <div className="flex justify-between">
               <dt className="text-navy-500">Subtotal</dt>
               <dd className="tabular-nums text-navy-900">${dollars(totalCents)}</dd>
@@ -208,9 +207,11 @@ export default function Checkout() {
               <dt className="text-navy-500">Shipping</dt>
               <dd className="text-navy-900">Free</dd>
             </div>
-            <div className="flex justify-between border-t border-neutral-200 pt-2 text-base font-semibold">
-              <dt className="text-navy-900">Total</dt>
-              <dd className="tabular-nums text-navy-900">${dollars(totalCents)}</dd>
+            <div className="flex items-baseline justify-between border-t border-neutral-200 pt-3">
+              <dt className="text-base font-bold text-navy-900">Total</dt>
+              <dd className="text-xl font-bold tabular-nums text-navy-900">
+                ${dollars(totalCents)}
+              </dd>
             </div>
           </dl>
         </aside>
