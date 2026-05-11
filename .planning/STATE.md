@@ -1,14 +1,9 @@
 ---
-project_code: SNKR
-project_title: SNKR hub — BackdPayments BNPL Demo
+gsd_state_version: 1.0
 milestone: v1
-milestone_status: shipped
-current_phase: null
-current_phase_status: idle
-last_completed_phase: 4
-total_phases: 4
-phases_complete: 4
-last_updated: 2026-05-09
+milestone_name: milestone
+status: unknown
+last_updated: "2026-05-11T14:29:16.713Z"
 ---
 
 # Project State: SNKR hub — BackdPayments BNPL Demo
@@ -25,6 +20,7 @@ See: .planning/PROJECT.md (updated 2026-05-09)
 **v1: Parity demo with rebranded checkout** — ✓ Shipped to https://v0-joe-demo.vercel.app on 2026-05-09.
 
 All four phases complete:
+
 1. Parity Build — ✓
 2. BackdPayments Rebrand — ✓
 3. Checkout Panel Craft — ✓
@@ -35,11 +31,13 @@ All four phases complete:
 ## Current Phase
 
 None active. To start the next milestone or add a phase, use:
+
 - `/gsd-new-milestone` — define new scope and create a fresh roadmap
 - `/gsd-phase add <description>` — append an ad-hoc phase to the existing roadmap
 
 ## Recent Activity
 
+- **2026-05-11**: Extracted v1 milestone learnings to `.planning/v1-LEARNINGS.md` (7 decisions, 5 lessons, 6 patterns, 6 surprises). Adapted from strict per-phase extraction since retroactive init didn't create PLAN/SUMMARY artifacts.
 - **2026-05-09**: Retroactive GSD initialization (planning artifacts created from shipped state)
 - **2026-05-09**: Phase 4 — Vercel deploy live at https://v0-joe-demo.vercel.app
 - **2026-05-09**: Phase 3 — Checkout panel craft (mint offer card, modal trigger via `initializeWidget`)
