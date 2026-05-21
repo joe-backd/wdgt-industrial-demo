@@ -1,4 +1,11 @@
+import { useSelector } from 'react-redux';
+import { selectCurrentStep, selectIsSubmitting } from '../store/applicationSlice';
 import BrandMark from './BrandMark';
+import BusinessInfoForm from './BusinessInfoForm';
+import FinancialInfoForm from './FinancialInfoForm';
+import TermsSelection from './TermsSelection';
+import ApplicationReview from './ApplicationReview';
+import ApplicationSuccess from './ApplicationSuccess';
 
 // Mirrors the BackdPayments app's first page from the team's Figma:
 // dark forest background with a subtle hex grid, white card centered,
@@ -13,6 +20,72 @@ export default function BackdPaymentsApp({
   onSelectTerms,
   onApply,
 }) {
+  const currentStep = useSelector(selectCurrentStep);
+  const isSubmitting = useSelector(selectIsSubmitting);
+
+  // Show loading overlay during submission
+  if (isSubmitting) {
+    return (
+      <div className="relative h-full w-full overflow-y-auto bg-forest-900">
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          aria-hidden="true"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <pattern id="bnpl-hex-a" width="48" height="56" patternUnits="userSpaceOnUse">
+              <polygon
+                points="12,1 36,1 47,28 36,55 12,55 1,28"
+                fill="none"
+                stroke="#234638"
+                strokeWidth="1"
+                opacity="0.7"
+              />
+            </pattern>
+            <pattern id="bnpl-hex-b" width="48" height="56" patternUnits="userSpaceOnUse" x="24" y="28">
+              <polygon
+                points="12,1 36,1 47,28 36,55 12,55 1,28"
+                fill="none"
+                stroke="#234638"
+                strokeWidth="1"
+                opacity="0.7"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#bnpl-hex-a)" />
+          <rect width="100%" height="100%" fill="url(#bnpl-hex-b)" />
+        </svg>
+
+        <div className="relative flex min-h-full items-center justify-center p-5 sm:p-6">
+          <div className="w-full max-w-md rounded-3xl bg-white px-8 py-10 shadow-2xl sm:px-10 sm:py-12">
+            <div className="text-center">
+              <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-mint-200 border-t-mint-500"></div>
+              <h2 className="mt-4 text-lg font-semibold text-navy-900">Submitting Application...</h2>
+              <p className="mt-2 text-sm text-navy-500">Please wait while we process your information.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  switch (currentStep) {
+    case 'business-info':
+      return <BusinessInfoForm />;
+    case 'financial-info':
+      return <FinancialInfoForm />;
+    case 'terms-selection':
+      return <TermsSelection />;
+    case 'review':
+      return <ApplicationReview />;
+    case 'success':
+      return <ApplicationSuccess onComplete={onApply} />;
+    default:
+      return <LandingPage vendorName={vendorName} vendorLogoSrc={vendorLogoSrc} onSelectTerms={onSelectTerms} onApply={onApply} />;
+  }
+}
+
+function LandingPage({ vendorName, vendorLogoSrc, onSelectTerms, onApply }) {
   return (
     <div className="relative h-full w-full overflow-y-auto bg-forest-900">
       {/* Two layered hex patterns offset by half a tile to approximate the

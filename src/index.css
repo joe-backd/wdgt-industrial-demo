@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
-  font-family: 'Montserrat', system-ui, sans-serif;
-  background: #fafafa;
-  color: #111;
+  font-family: 'IBM Plex Sans', Montserrat, system-ui, sans-serif;
+  background: #FAF8F4;
+  color: #1F1B16;
+}
+
+/* Pay Later with BackdPayments button hover */
+.bp-paylater-btn {
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.bp-paylater-btn:hover {
+  background: #f2fff7 !important;
+  border-color: #a8dfc0 !important;
+  box-shadow: 0 4px 14px rgba(11,39,43,.10) !important;
 }

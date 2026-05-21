@@ -5,47 +5,162 @@ const dollars = (cents) => (cents / 100).toFixed(2);
 const monthlyEstimate = (cents) => dollars(asLowAsMonthlyCents(cents));
 
 // Below this synthetic floor the BNPL split doesn't make sense
-// (demo prices range $16–$2k, but a $0 cart still mounts the panel).
 const MIN_BNPL_CENTS = 100;
 
 export default function BackdOfferCard({ totalCents }) {
   if (totalCents < MIN_BNPL_CENTS) {
     return (
-      <div className="rounded-3xl bg-mint-50 px-7 py-6 text-center text-sm text-navy-700">
+      <div
+        style={{
+          background: '#EDF7F4',
+          border: '1px solid #D6E7E0',
+          borderRadius: 10,
+          padding: '14px 18px',
+          margin: '16px 0',
+          textAlign: 'center',
+          fontSize: 13,
+          color: '#5a6a66',
+        }}
+      >
         BackdPayments available on orders over $1
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl bg-mint-50 px-7 pb-6 pt-7">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-5">
-        <div className="text-center">
-          <p className="text-2xl font-bold leading-none text-navy-900">Net 30</p>
-          <p className="mt-2 text-xs text-navy-500">Up to 90 days</p>
+    <div
+      style={{
+        background: '#EDF7F4',
+        border: '1px solid #D6E7E0',
+        borderRadius: 10,
+        padding: '14px 18px',
+        margin: '16px 0',
+        boxShadow:
+          '0 2px 6px rgba(11,39,43,.08), 0 1px 2px rgba(11,39,43,.04), inset 0 1px 0 rgba(255,255,255,.7)',
+      }}
+    >
+      {/* Row 1: Net 30 | OR | as low as */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
+          alignItems: 'center',
+          gap: 12,
+        }}
+      >
+        {/* Net 30 */}
+        <div style={{ textAlign: 'center' }}>
+          <p
+            style={{
+              fontSize: 22,
+              fontWeight: 600,
+              lineHeight: 1,
+              color: '#0B272B',
+              margin: 0,
+            }}
+          >
+            Net 30
+          </p>
+          <p
+            style={{
+              marginTop: 6,
+              fontSize: 11,
+              color: '#5a6a66',
+              margin: '6px 0 0',
+            }}
+          >
+            Up to 90 days
+          </p>
         </div>
 
-        <div className="flex flex-col items-center gap-1.5" aria-hidden="true">
-          <span className="block h-6 w-px bg-mint-200" />
-          <span className="text-[10px] font-bold tracking-[0.2em] text-navy-500">OR</span>
-          <span className="block h-6 w-px bg-mint-200" />
+        {/* OR divider */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 4,
+          }}
+          aria-hidden="true"
+        >
+          <span
+            style={{
+              display: 'block',
+              width: 1,
+              height: 20,
+              background: 'rgba(38,147,116,0.45)',
+            }}
+          />
+          <span
+            style={{
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: '0.2em',
+              color: '#3d5a52',
+            }}
+          >
+            OR
+          </span>
+          <span
+            style={{
+              display: 'block',
+              width: 1,
+              height: 20,
+              background: 'rgba(38,147,116,0.45)',
+            }}
+          />
         </div>
 
-        <div className="text-center">
-          <p className="text-xs text-navy-500">as low as</p>
-          <p className="mt-2 text-2xl font-bold leading-none text-navy-900">
+        {/* As low as */}
+        <div style={{ textAlign: 'center' }}>
+          <p
+            style={{
+              fontSize: 11,
+              color: '#5a6a66',
+              margin: 0,
+            }}
+          >
+            as low as
+          </p>
+          <p
+            style={{
+              marginTop: 4,
+              fontSize: 22,
+              fontWeight: 600,
+              lineHeight: 1,
+              color: '#0B272B',
+              margin: '4px 0 0',
+            }}
+          >
             ${monthlyEstimate(totalCents)}
-            <span className="text-base font-semibold text-navy-500">/mo</span>
+            <span
+              style={{
+                fontSize: 13,
+                fontWeight: 400,
+                color: '#5a6a66',
+              }}
+            >
+              /mo
+            </span>
           </p>
         </div>
       </div>
 
-      <hr className="my-5 border-0 border-t border-mint-200" />
-
-      <p className="flex items-center justify-center gap-2 text-base text-navy-700">
-        <span className="text-navy-500">with</span>
+      {/* Row 2: with BackdPayments */}
+      <div
+        style={{
+          marginTop: 12,
+          paddingTop: 10,
+          borderTop: '1px solid rgba(38,147,116,0.18)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 6,
+        }}
+      >
+        <span style={{ fontSize: 10, fontWeight: 400, color: '#8aada4', letterSpacing: '0.12em', textTransform: 'uppercase' }}>with</span>
         <BrandMark size="md" />
-      </p>
+      </div>
     </div>
   );
 }

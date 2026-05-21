@@ -4,14 +4,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', 'Montserrat', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       colors: {
         mint: {
           50: 'oklch(0.962 0.022 175)',
           100: 'oklch(0.93 0.03 173)',
           200: 'oklch(0.85 0.045 170)',
-          500: '#269374', // BackdPayments brand green (B-mark + "Payments" wordmark)
+          500: '#269374',
           600: '#1f7a60',
         },
         navy: {
@@ -34,6 +35,18 @@ export default {
         gold: {
           500: '#E5B964',
           600: '#D8A84F',
+        },
+        wdgt: {
+          bg: '#FAF8F4',
+          surface: '#FFFFFF',
+          soft: '#F2EEE6',
+          border: '#E5E1D8',
+          border2: '#D8D3C7',
+          text: '#1F1B16',
+          text2: '#4A453E',
+          text3: '#7A736A',
+          accent: '#A8533A',
+          accentbg: '#F7EDE7',
         },
       },
       borderRadius: {

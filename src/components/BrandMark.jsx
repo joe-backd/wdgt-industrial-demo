@@ -18,7 +18,7 @@ export default function BrandMark({ size = 'md', className = '' }) {
   const v = SIZE_VARIANTS[size] ?? SIZE_VARIANTS.md;
   return (
     <span
-      className={`inline-flex items-center font-bold tracking-tight ${v.text} ${className}`}
+      className={`inline-flex items-center ${v.text} ${className}`}
       aria-label="BackdPayments"
     >
       <svg
@@ -27,7 +27,7 @@ export default function BrandMark({ size = 'md', className = '' }) {
         viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 text-mint-500"
+        className="bp-brandmark-icon shrink-0 text-mint-500"
         aria-hidden="true"
         focusable="false"
       >
@@ -37,7 +37,7 @@ export default function BrandMark({ size = 'md', className = '' }) {
         />
       </svg>
       <span>
-        <span className="text-navy-900">Backd</span><span className="text-mint-500">Payments</span>
+        <span className="bp-brandmark-backd text-navy-900">Backd</span><span className="bp-brandmark-payments text-mint-500">Payments</span>
       </span>
     </span>
   );

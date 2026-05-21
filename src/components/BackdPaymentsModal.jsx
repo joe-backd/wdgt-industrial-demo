@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setStep } from '../store/applicationSlice';
 import BackdPaymentsApp from './BackdPaymentsApp';
 
 // Modal wrapper around our local BackdPaymentsApp clone. Replaces the
@@ -6,6 +8,8 @@ import BackdPaymentsApp from './BackdPaymentsApp';
 // rendering so the team can iterate on branding/copy without touching
 // the production BNPL repo.
 export default function BackdPaymentsModal({ open, onClose, onSuccess, onFail }) {
+  const dispatch = useDispatch();
+
   // ESC closes
   useEffect(() => {
     if (!open) return;
@@ -26,7 +30,18 @@ export default function BackdPaymentsModal({ open, onClose, onSuccess, onFail })
     };
   }, [open]);
 
+  // Reset application state when modal opens
+  useEffect(() => {
+    if (open) {
+      dispatch(setStep('landing'));
+    }
+  }, [open, dispatch]);
+
   if (!open) return null;
+
+  const startApplication = () => {
+    dispatch(setStep('business-info'));
+  };
 
   const complete = () => onSuccess?.();
 
@@ -54,7 +69,7 @@ export default function BackdPaymentsModal({ open, onClose, onSuccess, onFail })
         <BackdPaymentsApp
           vendorName="SNKR hub"
           vendorLogoSrc="/official-store.png"
-          onSelectTerms={complete}
+          onSelectTerms={startApplication}
           onApply={complete}
         />
       </div>
