@@ -24,7 +24,7 @@ export default function Cart() {
             <span className="text-4xl">🛒</span>
             <h1 className="mt-4 text-xl font-bold text-[#1F1B16]">Your cart is empty</h1>
             <p className="mt-2 text-sm text-[#4A453E]">
-              Add industrial equipment to your cart to demo BackdPayments net terms.
+              Browse and add equipment to your cart to get started.
             </p>
             <Link
               to="/explore"
@@ -194,43 +194,43 @@ export default function Cart() {
                 Update Cart
               </button>
             </div>
+
+            {/* Delivery estimate bar */}
+            <div
+              className="mt-4 flex items-center gap-3 px-5 py-3"
+              style={{ background: '#FFFFFF', border: '1px solid #E5E1D8', borderLeft: '3px solid #269374' }}
+            >
+              <span className="text-lg">🚚</span>
+              <div>
+                <p className="text-xs font-semibold text-[#1F1B16]">Standard Delivery — Free</p>
+                <p className="font-mono text-[10px] text-[#7A736A]">Ships from Austin, TX · Estimated 2–4 business days</p>
+              </div>
+            </div>
+
+            {/* Trust badges */}
+            <div
+              className="mt-4 grid grid-cols-2 divide-x divide-y"
+              style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}
+            >
+              {[
+                { icon: '🔒', label: 'Secure Checkout', sub: 'SSL encrypted' },
+                { icon: '↩️', label: '30-Day Returns', sub: 'No questions asked' },
+                { icon: '📋', label: 'Net Terms', sub: 'Net 30 & extended terms' },
+                { icon: '📞', label: 'Expert Support', sub: '1-800-WDGT-SUP' },
+              ].map(({ icon, label, sub }) => (
+                <div key={label} className="flex items-center gap-3 px-4 py-3" style={{ borderColor: '#E5E1D8' }}>
+                  <span className="text-xl">{icon}</span>
+                  <div>
+                    <p className="text-[11px] font-semibold text-[#1F1B16]">{label}</p>
+                    <p className="font-mono text-[9px] text-[#7A736A]">{sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right: checkout panel */}
           <CheckoutPanel />
-        </div>
-
-        {/* Delivery estimate bar */}
-        <div
-          className="mt-6 flex items-center gap-3 px-5 py-3"
-          style={{ background: '#FFFFFF', border: '1px solid #E5E1D8', borderLeft: '3px solid #269374' }}
-        >
-          <span className="text-lg">🚚</span>
-          <div>
-            <p className="text-xs font-semibold text-[#1F1B16]">Standard Delivery — Free</p>
-            <p className="font-mono text-[10px] text-[#7A736A]">Ships from Austin, TX · Estimated 2–4 business days</p>
-          </div>
-        </div>
-
-        {/* Trust badges */}
-        <div
-          className="mt-4 grid grid-cols-4 divide-x"
-          style={{ border: '1px solid #E5E1D8', background: '#FFFFFF', divideColor: '#E5E1D8' }}
-        >
-          {[
-            { icon: '🔒', label: 'Secure Checkout', sub: 'SSL encrypted' },
-            { icon: '↩️', label: '30-Day Returns', sub: 'No questions asked' },
-            { icon: '📋', label: 'Net Terms', sub: 'via BackdPayments' },
-            { icon: '📞', label: 'Expert Support', sub: '1-800-WDGT-IND' },
-          ].map(({ icon, label, sub }) => (
-            <div key={label} className="flex items-center gap-3 px-4 py-3" style={{ borderRight: '1px solid #E5E1D8' }}>
-              <span className="text-xl">{icon}</span>
-              <div>
-                <p className="text-[11px] font-semibold text-[#1F1B16]">{label}</p>
-                <p className="font-mono text-[9px] text-[#7A736A]">{sub}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>

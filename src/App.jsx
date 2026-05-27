@@ -6,6 +6,7 @@ import Preview from './pages/Preview';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import BackdPay from './pages/BackdPay';
+import Account from './pages/Account';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/BackdPay" element={<BackdPay />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </main>
     </>

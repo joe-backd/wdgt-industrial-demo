@@ -15,7 +15,7 @@ export default function Navbar() {
       {pathname === '/' && (
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E8E4DC' }}>
           <div className="flex items-center justify-center gap-2 px-6 py-2">
-            <BrandMark size="sm" />
+            <img src="/bp-logo-dark.png" alt="BackdPayments" style={{ height: 20, width: 'auto' }} />
             <span style={{ fontSize: 13, color: '#1F1B16' }}>
               Net terms or payment up to 24 months.
             </span>
@@ -36,7 +36,7 @@ export default function Navbar() {
       <div style={{ background: '#ECE6D8', borderBottom: '1px solid #D8D3C7' }}>
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-1.5">
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[11px] text-[#4A453E]">📞 1-800-WDGT-IND</span>
+            <span className="font-mono text-[11px] text-[#4A453E]">📞 1-800-WDGT-SUP</span>
             <span className="text-[#D8D3C7]">|</span>
             <a href="#" className="font-mono text-[11px] text-[#4A453E] hover:text-[#1F1B16]">Help Center</a>
             <a href="#" className="font-mono text-[11px] text-[#4A453E] hover:text-[#1F1B16]">Order Status</a>
@@ -63,10 +63,7 @@ export default function Navbar() {
             <WLogoMark size={44} />
             <div>
               <div className="text-[15px] font-bold tracking-[0.08em] text-[#1F1B16] leading-none">
-                WDGT INDUSTRIAL
-              </div>
-              <div className="font-mono text-[10px] text-[#7A736A] tracking-[0.05em] mt-0.5">
-                B2B Equipment &amp; Supply
+                WDGT SUPPLY
               </div>
             </div>
           </Link>
@@ -90,13 +87,13 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div className="flex items-center gap-3 shrink-0">
-            <button
-              type="button"
+            <Link
+              to="/account"
               className="border border-[#E5E1D8] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#1F1B16] hover:border-[#1F1B16]"
               style={{ borderRadius: 0 }}
             >
               My Account
-            </button>
+            </Link>
             <Link
               to="/cart"
               className="relative flex items-center gap-1.5 border border-[#1F1B16] bg-[#1F1B16] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white hover:bg-[#4A453E]"

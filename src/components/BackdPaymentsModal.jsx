@@ -67,8 +67,8 @@ export default function BackdPaymentsModal({ open, onClose, onSuccess, onFail })
           </svg>
         </button>
         <BackdPaymentsApp
-          vendorName="SNKR hub"
-          vendorLogoSrc="/official-store.png"
+          vendorName="WDGT SUPPLY"
+          vendorLogoSrc="/wlogo.png"
           onSelectTerms={startApplication}
           onApply={complete}
         />

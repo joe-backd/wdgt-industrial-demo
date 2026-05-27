@@ -174,12 +174,28 @@ export default function Preview() {
                     </div>
                     <p className="font-mono text-[11px] text-[#7A736A]">
                       Spec sheets, CAD files, and wiring diagrams available upon request.
-                      Contact technical support at 1-800-WDGT-IND.
+                      Contact technical support at 1-800-WDGT-SUP.
                     </p>
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Key Specs */}
+            <div className="mt-6">
+              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#7A736A] mb-2">Key Specs</p>
+              <div className="grid grid-cols-2 gap-px" style={{ background: '#E5E1D8' }}>
+                {specEntries.map(([k, v]) => (
+                  <div key={k} className="px-3 py-2" style={{ background: '#FFFFFF' }}>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.08em] text-[#7A736A]">{k}</p>
+                    <p className="font-mono text-[11px] font-semibold text-[#1F1B16] mt-0.5">{v}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Short desc */}
+            <p className="mt-4 text-sm text-[#4A453E] leading-relaxed">{product.short_desc}</p>
           </div>
 
           {/* Right: product info */}
@@ -234,25 +250,6 @@ export default function Preview() {
 
             {/* BackdOfferCard */}
             <BackdOfferCard totalCents={product.retail_price_cents} />
-
-            {/* Quick specs */}
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#7A736A] mb-2">Key Specs</p>
-              <div
-                className="grid grid-cols-2 gap-px"
-                style={{ background: '#E5E1D8' }}
-              >
-                {specEntries.map(([k, v]) => (
-                  <div key={k} className="px-3 py-2" style={{ background: '#FFFFFF' }}>
-                    <p className="font-mono text-[9px] uppercase tracking-[0.08em] text-[#7A736A]">{k}</p>
-                    <p className="font-mono text-[11px] font-semibold text-[#1F1B16] mt-0.5">{v}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Short desc */}
-            <p className="text-sm text-[#4A453E] leading-relaxed">{product.short_desc}</p>
 
             {/* Buy box */}
             <div

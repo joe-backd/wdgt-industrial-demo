@@ -149,7 +149,7 @@ export default function Home() {
                 <span style={{ color: '#A8533A' }}>On net terms.</span>
               </h1>
               <p className="mt-4 max-w-lg text-[15px] text-[#4A453E] leading-relaxed">
-                WDGT Industrial stocks 2,400+ SKUs in Austin TX for same-day ship. BackdPayments Net 30 and extended terms available at checkout — no forms, no delays.
+                WDGT Supply stocks 2,400+ SKUs in Austin TX for same-day ship. Flexible payment terms available at checkout — no forms, no delays.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -263,13 +263,12 @@ export default function Home() {
               <div className="flex items-center gap-2 mb-4">
                 <WLogoMark size={36} />
                 <div>
-                  <div className="text-[12px] font-bold tracking-[0.08em] text-white leading-none">WDGT INDUSTRIAL</div>
-                  <div className="font-mono text-[9px] text-[#7A736A] tracking-[0.05em] mt-0.5">B2B Equipment</div>
+                  <div className="text-[12px] font-bold tracking-[0.08em] text-white leading-none">WDGT SUPPLY</div>
                 </div>
               </div>
               <p className="font-mono text-[11px] text-[#7A736A] leading-relaxed">
                 Austin, TX<br />
-                1-800-WDGT-IND<br />
+                1-800-WDGT-SUP<br />
                 supply@wdgt.io
               </p>
             </div>
@@ -298,10 +297,10 @@ export default function Home() {
             style={{ borderTop: '1px solid #2A2520' }}
           >
             <p className="font-mono text-[10px] text-[#4A453E]">
-              © 2026 WDGT Industrial Supply, Inc. All rights reserved.
+              © 2026 WDGT Supply, Inc. All rights reserved.
             </p>
             <p className="font-mono text-[10px] text-[#4A453E]">
-              BNPL financing provided by BackdPayments
+              Flexible financing options available at checkout
             </p>
           </div>
         </div>

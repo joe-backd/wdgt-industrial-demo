@@ -70,7 +70,7 @@ export default function ApplicationSuccess({ onComplete }) {
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2 text-mint-500">•</span>
-                  You can start using BackdPayments immediately
+                  Your account is ready to use immediately
                 </li>
               </ul>
             </div>

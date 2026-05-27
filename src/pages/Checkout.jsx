@@ -72,12 +72,13 @@ export default function Checkout() {
     <div style={{ background: '#FAF8F4', minHeight: '60vh' }}>
       <div className="mx-auto max-w-[1200px] px-6 py-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_480px] lg:items-start">
+
           {/* Left column */}
           <div className="space-y-6">
             <div>
               <h1 className="text-2xl font-bold text-[#1F1B16]">Checkout</h1>
               <p className="mt-1 text-sm text-[#4A453E]">
-                Complete your order below. Net 30 and extended terms are available via BackdPayments — no paperwork required.
+                Complete your order below. Flexible payment options are available at checkout.
               </p>
             </div>
 
@@ -132,6 +133,91 @@ export default function Checkout() {
               </div>
             </div>
 
+            {/* Need Help box */}
+            <div style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}>
+              <div
+                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#1F1B16] px-5 py-3"
+                style={{ borderBottom: '1px solid #E5E1D8', background: '#F2EEE6' }}
+              >
+                Need Help?
+              </div>
+              <div className="p-5 space-y-2">
+                {[
+                  { icon: '📞', label: 'Phone', value: '1-800-WDGT-SUP (Mon–Fri 7 AM–6 PM CT)' },
+                  { icon: '✉️', label: 'Email', value: 'orders@wdgt.io' },
+                  { icon: '💬', label: 'Live Chat', value: 'Available on site during business hours' },
+                  { icon: '🔧', label: 'Tech Support', value: 'techsupport@wdgt.io' },
+                ].map(({ icon, label, value }) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <span className="text-base shrink-0 mt-0.5">{icon}</span>
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#7A736A]">{label}</p>
+                      <p className="text-xs text-[#1F1B16]">{value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right column: order summary + payment */}
+          <div className="space-y-4">
+            {/* Your Order */}
+            <div style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}>
+              <div
+                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#1F1B16] px-5 py-3"
+                style={{ borderBottom: '1px solid #E5E1D8', background: '#F2EEE6' }}
+              >
+                Your Order
+              </div>
+
+              {/* Line items */}
+              <ul className="divide-y divide-[#E5E1D8]">
+                {items.map((it) => (
+                  <li
+                    key={`${it.id}-${it.size}`}
+                    className="flex items-center gap-3 px-5 py-3"
+                  >
+                    <div className="shrink-0 flex items-center justify-center overflow-hidden" style={{ width: 44, height: 44, background: '#F2EEE6' }}>
+                      <ProductImage productId={it.id} size="sm" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-[#1F1B16] line-clamp-1">{it.name}</p>
+                      <p className="font-mono text-[9px] text-[#7A736A]">Qty {it.qty}</p>
+                    </div>
+                    <p className="font-mono text-xs font-bold tabular-nums text-[#1F1B16] shrink-0">
+                      ${dollars(it.priceCents * it.qty)}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Totals */}
+              <div className="px-5 py-4 space-y-2.5" style={{ borderTop: '1px solid #E5E1D8' }}>
+                <div className="flex justify-between text-sm">
+                  <span className="text-[#4A453E]">Subtotal</span>
+                  <span className="font-mono tabular-nums text-[#1F1B16]">${dollars(totalCents)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-[#4A453E]">Shipping</span>
+                  <span className="text-[#1F1B16]">Free</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-[#4A453E]">Tax</span>
+                  <span className="font-mono tabular-nums text-[#1F1B16]">$0.00</span>
+                </div>
+                <div
+                  className="flex items-baseline justify-between pt-3"
+                  style={{ borderTop: '2px solid #1F1B16' }}
+                >
+                  <span className="text-base font-bold text-[#1F1B16]">Total</span>
+                  <span className="font-mono text-xl font-bold tabular-nums text-[#1F1B16]">
+                    ${dollars(totalCents)}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* Payment methods */}
             <div style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}>
               <div
@@ -145,7 +231,7 @@ export default function Checkout() {
                 <div
                   className="cursor-pointer transition-colors"
                   style={{
-                    background: paymentMethod === 'backd' ? '#F7EDE7' : '#FFFFFF',
+                    background: paymentMethod === 'backd' ? '#f2fff7' : '#FFFFFF',
                     padding: '16px 20px',
                   }}
                   onClick={() => setPaymentMethod('backd')}
@@ -162,7 +248,6 @@ export default function Checkout() {
                         <span className="block h-1.5 w-1.5 rounded-full bg-white" />
                       )}
                     </div>
-                    {/* Label row — consistent sizing with button below */}
                     <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
                       <span style={{ fontSize: 15, color: '#1F1B16' }}>
                         Access <strong>Net Terms Instantly</strong> with
@@ -173,29 +258,16 @@ export default function Checkout() {
                   {paymentMethod === 'backd' && (
                     <div className="mt-4 space-y-3 pl-7">
                       <p className="text-xs text-[#4A453E]">
-                        You'll be redirected to BackdPayments to complete your application. Most approvals take under 2 minutes. Net 30 and extended monthly terms available.
+                        Complete a quick application for flexible payment terms. Most approvals take under 2 minutes.
                       </p>
                       <button
                         type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setBnplOpen(true);
-                        }}
-                        className="bp-paylater-btn flex w-full items-center justify-center gap-2.5"
-                        style={{
-                          borderRadius: 10,
-                          padding: '13px 22px',
-                          boxShadow: '0 2px 8px rgba(11,39,43,.08), 0 1px 2px rgba(11,39,43,.04)',
-                          cursor: 'pointer',
-                          fontFamily: "'IBM Plex Sans', sans-serif",
-                        }}
+                        onClick={(e) => { e.stopPropagation(); setBnplOpen(true); }}
+                        className="flex w-full items-center justify-center gap-2 border-[1.5px] border-[#C8E6DC] bg-white transition-all hover:border-[#269374] hover:bg-[#f2fff7] hover:shadow-sm active:scale-[0.99]"
+                        style={{ borderRadius: 10, padding: '12px 22px', cursor: 'pointer' }}
                       >
-                        <span className="bp-pay-text" style={{ fontSize: 15, fontWeight: 600, color: '#0B372B' }}>
-                          Pay Later
-                        </span>
-                        <span className="bp-pay-text" style={{ fontSize: 15, fontWeight: 400, color: '#0B372B' }}>
-                          with
-                        </span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: '#1F1B16' }}>Pay Later</span>
+                        <span style={{ fontSize: 14, fontWeight: 400, color: '#1F1B16' }}>with</span>
                         <BrandMark size="md" />
                       </button>
                     </div>
@@ -322,90 +394,6 @@ export default function Checkout() {
                       )}
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Need Help box */}
-            <div style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}>
-              <div
-                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#1F1B16] px-5 py-3"
-                style={{ borderBottom: '1px solid #E5E1D8', background: '#F2EEE6' }}
-              >
-                Need Help?
-              </div>
-              <div className="p-5 space-y-2">
-                {[
-                  { icon: '📞', label: 'Phone', value: '1-800-WDGT-IND (Mon–Fri 7 AM–6 PM CT)' },
-                  { icon: '✉️', label: 'Email', value: 'orders@wdgt.io' },
-                  { icon: '💬', label: 'Live Chat', value: 'Available on site during business hours' },
-                  { icon: '🔧', label: 'Tech Support', value: 'techsupport@wdgt.io' },
-                ].map(({ icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <span className="text-base shrink-0 mt-0.5">{icon}</span>
-                    <div>
-                      <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#7A736A]">{label}</p>
-                      <p className="text-xs text-[#1F1B16]">{value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right column: order summary */}
-          <div className="space-y-4">
-            <div style={{ border: '1px solid #E5E1D8', background: '#FFFFFF' }}>
-              <div
-                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-[#1F1B16] px-5 py-3"
-                style={{ borderBottom: '1px solid #E5E1D8', background: '#F2EEE6' }}
-              >
-                Your Order
-              </div>
-
-              {/* Line items */}
-              <ul className="divide-y divide-[#E5E1D8]">
-                {items.map((it) => (
-                  <li
-                    key={`${it.id}-${it.size}`}
-                    className="flex items-center gap-3 px-5 py-3"
-                  >
-                    <div className="shrink-0 flex items-center justify-center overflow-hidden" style={{ width: 44, height: 44, background: '#F2EEE6' }}>
-                      <ProductImage productId={it.id} size="sm" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold text-[#1F1B16] line-clamp-1">{it.name}</p>
-                      <p className="font-mono text-[9px] text-[#7A736A]">Qty {it.qty}</p>
-                    </div>
-                    <p className="font-mono text-xs font-bold tabular-nums text-[#1F1B16] shrink-0">
-                      ${dollars(it.priceCents * it.qty)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Totals */}
-              <div className="px-5 py-4 space-y-2.5" style={{ borderTop: '1px solid #E5E1D8' }}>
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#4A453E]">Subtotal</span>
-                  <span className="font-mono tabular-nums text-[#1F1B16]">${dollars(totalCents)}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#4A453E]">Shipping</span>
-                  <span className="text-[#1F1B16]">Free</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#4A453E]">Tax</span>
-                  <span className="font-mono tabular-nums text-[#1F1B16]">$0.00</span>
-                </div>
-                <div
-                  className="flex items-baseline justify-between pt-3"
-                  style={{ borderTop: '2px solid #1F1B16' }}
-                >
-                  <span className="text-base font-bold text-[#1F1B16]">Total</span>
-                  <span className="font-mono text-xl font-bold tabular-nums text-[#1F1B16]">
-                    ${dollars(totalCents)}
-                  </span>
                 </div>
               </div>
             </div>

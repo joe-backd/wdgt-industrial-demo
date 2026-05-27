@@ -28,7 +28,7 @@ export default function BackdPay() {
         {/* Heading */}
         <h1 className="mt-6 text-2xl font-bold text-[#1F1B16]">Order Confirmed</h1>
         <p className="mt-3 text-sm text-[#4A453E] leading-relaxed max-w-sm">
-          Your WDGT Industrial order has been placed. You'll receive a confirmation and shipping notification by email.
+          Your WDGT Supply order has been placed. You'll receive a confirmation and shipping notification by email.
         </p>
 
         {/* Order details card */}
@@ -47,7 +47,7 @@ export default function BackdPay() {
               { step: '01', label: 'Confirmation Email', desc: 'Check your inbox for order details and invoice.' },
               { step: '02', label: 'Processing', desc: 'Your order enters our warehouse queue immediately.' },
               { step: '03', label: 'Ships from Austin TX', desc: 'You\'ll receive a tracking number within 1 business day.' },
-              { step: '04', label: 'Net Terms', desc: 'BackdPayments will email your payment schedule separately.' },
+              { step: '04', label: 'Payment Schedule', desc: 'Your payment schedule will be emailed to you separately.' },
             ].map(({ step, label, desc }) => (
               <div key={step} className="flex items-start gap-4 px-5 py-3">
                 <span
@@ -85,7 +85,7 @@ export default function BackdPay() {
 
         {/* Support note */}
         <p className="mt-8 font-mono text-[10px] text-[#7A736A]">
-          Questions? Call 1-800-WDGT-IND or email orders@wdgt.io
+          Questions? Call 1-800-WDGT-SUP or email orders@wdgt.io
         </p>
       </div>
     </div>
